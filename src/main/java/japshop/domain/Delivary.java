@@ -11,11 +11,19 @@ public class Delivary extends BaseEntity{
     @GeneratedValue
     private Long id;
 
-    private String city;
-    private String street;
-    private String zipcode;
+    @Embedded
+    private Address address;
+
     private DelivaryStatus status;
 
     @OneToOne(mappedBy = "delivary", fetch = FetchType.LAZY)
     private Order order;
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
 }
